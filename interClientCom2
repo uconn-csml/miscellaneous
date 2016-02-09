@@ -21,11 +21,11 @@ namespace WebApplication3
             users[userName] = Context.ConnectionId;
             return base.OnConnected();
         }
-        public void Send(string name, string message)
+        public void Send(string targetUser, string message)
         {
             // Call the broadcastMessage method to update a specific user (e.g., user2).
 
-            Clients.Client(users["user2"]).broadcastMessage(name, message);
+            Clients.Client(users["targetUser"]).broadcastMessage(message);
         }
     }
 }
