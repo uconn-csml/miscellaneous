@@ -23,7 +23,7 @@ namespace WebApplication3
         }
         public void Send(string name, string message)
         {
-            // Call the broadcastMessage method to update clients.
+            // Call the broadcastMessage method to update a specific user (e.g., user2).
 
             Clients.Client(users["user2"]).broadcastMessage(name, message);
         }
