@@ -11,7 +11,12 @@ namespace WebApplication3
     public class ChatHub : Hub
     {
         private static int userCount = 0;
-
+        
+        // ConcurrentDictionary handles multiple threads. This type from the System.Collections.Concurrent namespace 
+        // allows multiple threads to access a Dictionary instance. With it, you get a thread-safe, hash-based lookup algorithm.
+        // See "Mapping ASP.NET SignalR Connections to Real Application Users":
+        // http://www.tugberkugurlu.com/archive/mapping-asp-net-signalr-connections-to-real-application-users
+        
         private static ConcurrentDictionary<string, string> users = new ConcurrentDictionary<string, string>();
         
         public override Task OnConnected()
@@ -23,9 +28,9 @@ namespace WebApplication3
         }
         public void Send(string targetUser, string message)
         {
-            // Call the broadcastMessage method to update a specific user (e.g., user2).
+            // Call the broadcastMessage method to update a target user (e.g., user2).
 
-            Clients.Client(users["targetUser"]).broadcastMessage(message);
+            Clients.Client(users[targetUser]).broadcastMessage(message);
         }
     }
 }
