@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using Newtonsoft.Json; // Please use Nuget to install this package
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +12,9 @@ namespace ConsoleApplication30
     {
         static void Main(string[] args)
         {
-           string webApiUrl = "http://localhost:8548/api/values";
+           string webApiUrl = "http://localhost:8548/api/values";  // Server REST web service URI
            CallWebApiUnprotectedAsync(webApiUrl);
-            Console.ReadLine();
+           Console.ReadLine();
         }
 
         private async static void CallWebApiUnprotectedAsync(string webApiUrl)
